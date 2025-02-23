@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            border: 3px solid blue;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .member {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: scale(0.8);
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .member.active {
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+        .member img {
+            width: 300px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid blue;
+            transition: transform 1s;
+        }
+        .member img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>OFFICER</h2>
+        <div class="carousel" id="carousel">
+            <div class="member active">
+                <img src="https://t3.ftcdn.net/jpg/00/77/71/12/360_F_77711294_BA5QTjtgGPmLKCXGdtbAgZciL4kEwCnx.jpg" alt="Milind Suryawanshi">
+                <p>MILIND SURYAWANSHI - FRONTEND DEVELOPER</p>
+            </div>
+            <div class="member">
+                <img src="https://t3.ftcdn.net/jpg/00/77/71/12/360_F_77711294_BA5QTjtgGPmLKCXGdtbAgZciL4kEwCnx.jpg" alt="Nisarg Parmar">
+                <p>NISARG-BACKEND DEVELOPER</p>
+            </div>
+            <div class="member">
+                <img src="https://t3.ftcdn.net/jpg/00/77/71/12/360_F_77711294_BA5QTjtgGPmLKCXGdtbAgZciL4kEwCnx.jpg" alt="kavya Bhauwsar">
+                <p>KAVYA BHAUWASAR-SUPPOERTER</p>
+                <div class="member">
+                    <img src="https://t3.ftcdn.net/jpg/00/77/71/12/360_F_77711294_BA5QTjtgGPmLKCXGdtbAgZciL4kEwCnx.jpg" alt="Nisarg Parmar">
+                    <p>MEET NIZAMA - CONTENT</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let index = 0;
+        const members = document.querySelectorAll(".member");
+        function showSlide() {
+            members.forEach((member, i) => {
+                member.classList.remove("active");
+                if (i === index) {
+                    member.classList.add("active");
+                }
+            });
+        }
+        function nextSlide() {
+            index = (index === members.length - 1) ? 0 : index + 1;
+            showSlide();
+        }
+        function autoSlide() {
+            nextSlide();
+            setTimeout(autoSlide, 3000);
+        }
+        showSlide();
+        setTimeout(autoSlide, 3000);
+    </script>
+</body>
+</html>
